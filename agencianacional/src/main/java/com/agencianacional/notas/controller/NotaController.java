@@ -14,26 +14,16 @@ import javax.validation.Valid;
 
 
 @RestController
-@Api(value = "User Resource REST Endpoint")
+
 public class NotaController {
-     @ApiOperation(value = "Returns Hello World")
-    @ApiResponses(
-            value = {
-                    @ApiResponse(code = 100, message = "100 is the message"),
-                    @ApiResponse(code = 200, message = "Successful Hello World")
-            }
-    )
-    @GetMapping
-    public String hello() {
-        return "Hello World";
-    }
+ 
 
     @Autowired
     private NotaServiceImpl notaService;
 
     
    
-    @ApiOperation(value = "Returns Hello World")
+   
     @PostMapping("/notes")
     public ResponseEntity<?> Post(@Valid @RequestBody NotaDTO notaDto) {
         return ResponseEntity.ok(notaService.save(notaDto));
